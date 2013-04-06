@@ -1,6 +1,6 @@
-# MrMongo
+# Mr. Mongo
 
-TODO: Write a gem description
+MapReduce framework for MongoDB using Ruby
 
 ## Installation
 
