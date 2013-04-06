@@ -31,7 +31,7 @@ module MrMongo
     end
 
     describe '#load' do
-      subject { loader.load(File.expand_path(File.join(__FILE__, '../../../fixtures/fixture_dsl.rb'))) }
+      subject { loader.load(File.expand_path(File.join(__FILE__, '../../../../fixtures/fixture_dsl.rb'))) }
 
       its(:collection) { should eq('foo') }
       its(:out)        { should eq('bar') }
