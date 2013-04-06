@@ -12,8 +12,16 @@ module MrMongo
       self
     end
 
-    %w{collection map reduce out query sort limit finalize scope js_mode verbose}.each do |s|
+    %w{collection map reduce out query sort limit finalize scope}.each do |s|
       define_method(s) {|arg| @map_reduce.send("#{s}=", arg) }
+    end
+
+    def verbose(arg = true)
+      @map_reduce.verbose = arg
+    end
+
+    def js_mode(arg = true)
+      @map_reduce.js_mode = arg
     end
   end
 end
