@@ -1,6 +1,6 @@
 collection "foo"
 out "bar"
-verbose true
+verbose
 
 __END__
 @@ map
