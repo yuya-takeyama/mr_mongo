@@ -2,8 +2,8 @@ module MrMongo
   class Dsl
     attr_reader :map_reduce
 
-    def initialize
-      @map_reduce = MapReduce.new
+    def initialize(context)
+      @map_reduce = MapReduce.new(context)
     end
 
     def parse(&block)
