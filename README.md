@@ -1,6 +1,6 @@
 # Mr. Mongo
 
-MapReduce framework for MongoDB using Ruby
+MapReduce framework for MongoDB using Ruby DSL
 
 ## Installation
 

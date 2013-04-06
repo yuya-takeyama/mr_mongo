@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = MrMongo::VERSION
   spec.authors       = ["Yuya Takeyama"]
   spec.email         = ["sign.of.the.wolf.pentagram@gmail.com"]
-  spec.description   = %q{MapReduce framework for MongoDB using Ruby}
-  spec.summary       = %q{MapReduce framework for MongoDB using Ruby}
+  spec.description   = %q{MapReduce framework for MongoDB using Ruby DSL}
+  spec.summary       = %q{MapReduce framework for MongoDB using Ruby DSL}
   spec.homepage      = ""
   spec.license       = "MIT"
 
