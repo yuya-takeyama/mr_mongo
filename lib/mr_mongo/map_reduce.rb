@@ -17,9 +17,26 @@ module MrMongo
       options[:out]      = @out      if defined?(@out)
       options[:verbose]  = @verbose  if defined?(@verbose)
 
-      options[:raw] = true if defined?(@out) and @out[:inline]
+      options[:raw] = true if defined?(@out) and @out.is_a?(::Hash) and @out[:inline]
 
       options
+    end
+
+    def exec
+      exec_with_options(to_options)
+    end
+
+    def exec_on_memory
+      options = to_options
+      options[:out] = {inline: true}
+      options[:raw] = true
+
+      exec_with_options(options)
+    end
+
+    private
+    def exec_with_options(options)
+      @context.db.collection(@collection).map_reduce(@map, @reduce, options)
     end
   end
 end

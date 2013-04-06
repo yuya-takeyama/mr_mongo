@@ -2,8 +2,8 @@ require 'inline_template_loader'
 
 module MrMongo
   class Loader
-    def initialize(db)
-      @db = db
+    def initialize(context)
+      @context = context
     end
 
     def load(file)
@@ -23,8 +23,7 @@ module MrMongo
     end
 
     def load_from_string(dsl_script, file = "(Mr. Mongo DSL)")
-      eval "MrMongo::Dsl.new(@db).parse {\n" + dsl_script + "\n}.map_reduce",
-        TOPLEVEL_BINDING, file, 0
+      instance_eval "Dsl.new(@context).parse {\n" + dsl_script + "\n}.map_reduce"
     end
   end
 end
