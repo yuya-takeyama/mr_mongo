@@ -36,7 +36,11 @@ module MrMongo
 
     private
     def exec_with_options(options)
-      @context.db.collection(@collection).map_reduce(@map, @reduce, options)
+      mongo_collection.map_reduce(@map, @reduce, options)
+    end
+
+    def mongo_collection
+      @context.db.collection(@collection)
     end
   end
 end
