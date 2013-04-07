@@ -23,7 +23,9 @@ module MrMongo
     end
 
     def load_from_string(dsl_script, file = "(Mr. Mongo DSL)")
-      instance_eval "Dsl.new(@context).parse {\n" + dsl_script + "\n}.map_reduce"
+      dsl = Dsl.new(@context)
+
+      eval "dsl.parse {\n" + dsl_script + "\n}.map_reduce", binding, file, 0
     end
   end
 end
