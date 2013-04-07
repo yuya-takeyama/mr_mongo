@@ -3,45 +3,19 @@ module MrMongo
     let(:context) { Context.new }
     let(:dsl) { Dsl.new(context) }
 
-    describe '#verbose' do
+    describe '#set' do
       subject { dsl.map_reduce.verbose }
 
-      context 'true is passed as argument' do
-        before { dsl.verbose true }
+      context 'one is passed as argument' do
+        before { dsl.set :verbose, 1 }
 
-        it { should be_true }
+        it 'should set its argument to MapReduce object' do
+          should eq(1)
+        end
       end
 
-      context 'false is passed as argument' do
-        before { dsl.verbose false }
-
-        it { should be_false }
-      end
-
-      context 'argument is omitted' do
-        before { dsl.verbose }
-
-        it { should be_true }
-      end
-    end
-
-    describe '#js_mode' do
-      subject { dsl.map_reduce.js_mode }
-
-      context 'true is passed as argument' do
-        before { dsl.js_mode true }
-
-        it { should be_true }
-      end
-
-      context 'false is passed as argument' do
-        before { dsl.js_mode false }
-
-        it { should be_false }
-      end
-
-      context 'argument is omitted' do
-        before { dsl.js_mode }
+      context 'no arguments are passed' do
+        before { dsl.set :verbose }
 
         it { should be_true }
       end

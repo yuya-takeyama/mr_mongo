@@ -15,13 +15,5 @@ module MrMongo
     def set(key, value = true)
       @map_reduce.send("#{key}=", value)
     end
-
-    def verbose(arg = true)
-      @map_reduce.verbose = arg
-    end
-
-    def js_mode(arg = true)
-      @map_reduce.js_mode = arg
-    end
   end
 end
