@@ -27,8 +27,19 @@ module MrMongo
       end
     end
 
-    describe '#exec_on_memory' do
-      subject { map_reduce.exec_on_memory['results'] }
+    describe 'MapReduce excution', mongo: true do
+      let(:expected) do
+        [
+          {'_id' => 'be', 'value' => 2.0},
+          {'_id' => 'not', 'value' => 1.0},
+          {'_id' => 'or', 'value' => 1.0},
+          {'_id' => 'to', 'value' => 2.0},
+        ]
+      end
+
+      shared_examples_for 'executes MapReduce correctly' do
+        it { should eq(expected) }
+      end
 
       before do
         collection = testing_database.collection('foo')
@@ -59,13 +70,18 @@ module MrMongo
         EOS
       end
 
-      it 'should get MapReduce result correctly', mongo: true do
-        should eq([
-          {'_id' => 'be', 'value' => 2.0},
-          {'_id' => 'not', 'value' => 1.0},
-          {'_id' => 'or', 'value' => 1.0},
-          {'_id' => 'to', 'value' => 2.0},
-        ])
+      describe '#exec' do
+        subject { map_reduce.exec.find.to_a }
+
+        before { map_reduce.out = {replace: 'result'} }
+
+        it_should_behave_like 'executes MapReduce correctly'
+      end
+
+      describe '#exec_on_memory' do
+        subject { map_reduce.exec_on_memory['results'] }
+
+        it_should_behave_like 'executes MapReduce correctly'
       end
     end
   end
