@@ -1,5 +1,5 @@
 set :collection, 'texts'
-set :out, {inline: 'word_counts'}
+set :out, {replace: 'word_counts'}
 
 __END__
 
