@@ -37,6 +37,7 @@ module MrMongo
     def insert_into_collection(*args)
       mongo_collection.send(:insert, *args)
     end
+    alias_method :insert, :insert_into_collection
 
     private
     def exec_with_options(options)

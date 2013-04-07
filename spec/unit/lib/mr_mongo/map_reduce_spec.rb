@@ -42,12 +42,12 @@ module MrMongo
       before do
         map_reduce.collection = 'foo'
 
-        map_reduce.insert_into_collection({word: 'to'})
-        map_reduce.insert_into_collection({word: 'be'})
-        map_reduce.insert_into_collection({word: 'or'})
-        map_reduce.insert_into_collection({word: 'not'})
-        map_reduce.insert_into_collection({word: 'to'})
-        map_reduce.insert_into_collection({word: 'be'})
+        map_reduce.insert({word: 'to'})
+        map_reduce.insert({word: 'be'})
+        map_reduce.insert({word: 'or'})
+        map_reduce.insert({word: 'not'})
+        map_reduce.insert({word: 'to'})
+        map_reduce.insert({word: 'be'})
 
         map_reduce.map = <<-EOS
           function () {
