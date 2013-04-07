@@ -1,5 +1,8 @@
 # Mr. Mongo
 
+[![Build Status](https://travis-ci.org/yuya-takeyama/mr_mongo.png?branch=master)](https://travis-ci.org/yuya-takeyama/mr_mongo)
+[![Coverage Status](https://coveralls.io/repos/yuya-takeyama/mr_mongo/badge.png?branch=master)](https://coveralls.io/r/yuya-takeyama/mr_mongo)
+
 MapReduce framework for MongoDB using Ruby DSL
 
 ## Installation
