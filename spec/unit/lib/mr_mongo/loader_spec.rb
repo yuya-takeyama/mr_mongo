@@ -10,9 +10,9 @@ module MrMongo
       context 'some parameters are set' do
         let(:dsl_script) do
           <<-EOS
-            collection "foo"
-            out "bar"
-            verbose true
+            set :collection, "foo"
+            set :out, "bar"
+            set :verbose, true
           EOS
         end
 

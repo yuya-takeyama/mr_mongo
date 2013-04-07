@@ -12,8 +12,8 @@ module MrMongo
       self
     end
 
-    %w{collection map reduce out query sort limit finalize scope}.each do |s|
-      define_method(s) {|arg| @map_reduce.send("#{s}=", arg) }
+    def set(key, value = true)
+      @map_reduce.send("#{key}=", value)
     end
 
     def verbose(arg = true)

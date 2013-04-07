@@ -1,6 +1,6 @@
-collection "foo"
-out "bar"
-verbose
+set :collection, "foo"
+set :out, "bar"
+set :verbose
 
 __END__
 @@ map
