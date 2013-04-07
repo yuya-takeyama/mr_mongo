@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "mongo", "~> 1.8.4"
   spec.add_dependency "bson_ext", "~> 1.8.4"
+  spec.add_dependency "thor", "~> 0.18.1"
   spec.add_dependency "inline_template_loader", "~> 0.3.0"
 
   spec.add_development_dependency "bundler", "~> 1.3"

@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'mr_mongo'
+
+MrMongo::Application.start

@@ -1,3 +1,4 @@
+require "mr_mongo/application"
 require "mr_mongo/context"
 require "mr_mongo/dsl"
 require "mr_mongo/loader"
