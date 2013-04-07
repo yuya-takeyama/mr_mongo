@@ -1,6 +1,13 @@
 language: ruby
+
 rvm:
   - 1.9.2
   - 1.9.3
   - 2.0.0
+
+services: mongodb
+
+env:
+  - MR_MONGO_RUN_ALL_TESTS=on
+
 script: bundle exec rspec

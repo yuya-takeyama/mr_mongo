@@ -4,7 +4,7 @@ require 'mr_mongo'
 require 'mongo'
 
 RSpec.configure do |c|
-  c.filter_run_excluding mongo: true
+  c.filter_run_excluding mongo: true unless ENV['MR_MONGO_RUN_ALL_TESTS']
 end
 
 def testing_connection
