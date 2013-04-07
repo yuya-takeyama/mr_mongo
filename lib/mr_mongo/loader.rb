@@ -11,12 +11,8 @@ module MrMongo
 
       map_reduce = load_from_string(dsl_script)
 
-      data_params = InlineTemplateLoader.load(file)
-
-      if data_params
-        data_params.each do |key, val|
-          map_reduce.send("#{key}=".to_sym, val)
-        end
+      InlineTemplateLoader.load(file).each do |key, val|
+        map_reduce.send("#{key}=".to_sym, val)
       end
 
       map_reduce
