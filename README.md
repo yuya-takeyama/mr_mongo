@@ -1,6 +1,9 @@
-# MrMongo
+# Mr. Mongo
 
-TODO: Write a gem description
+[![Build Status](https://travis-ci.org/yuya-takeyama/mr_mongo.png?branch=master)](https://travis-ci.org/yuya-takeyama/mr_mongo)
+[![Coverage Status](https://coveralls.io/repos/yuya-takeyama/mr_mongo/badge.png?branch=master)](https://coveralls.io/r/yuya-takeyama/mr_mongo)
+
+MapReduce framework for MongoDB using Ruby DSL
 
 ## Installation
 
@@ -18,7 +21,48 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### mr_mongo command
+
+```
+$ bundle exec mr_mongo
+Commands:
+  mr_mongo exec            # executes MapReduce
+  mr_mongo exec_on_memory  # executes MapReduce on memory
+  mr_mongo help [COMMAND]  # Describe available commands or one specific command
+```
+
+*NOTICE*
+
+The result of exec_on_memory may be massive, so it's preferable to use for small collections as testing.
+
+### Defining MapReduce job using DSL
+
+Following is word-count example using Mr. Mongo DSL
+
+```ruby
+set :collection, 'texts'
+set :out, {replace: 'word_counts'}
+
+__END__
+
+@@ map
+function () {
+  this.text.split(/\s+/).forEach(function (word) {
+    emit(word, {count: 1});
+  });
+}
+
+@@ reduce
+function (key, values) {
+  var count = 0;
+
+  values.forEach(function (value) {
+    count += value.count;
+  });
+
+  return {count: count};
+}
+```
 
 ## Contributing
 
