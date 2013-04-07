@@ -42,16 +42,15 @@ module MrMongo
       end
 
       before do
-        collection = testing_database.collection('foo')
-
-        collection.insert({word: 'to'})
-        collection.insert({word: 'be'})
-        collection.insert({word: 'or'})
-        collection.insert({word: 'not'})
-        collection.insert({word: 'to'})
-        collection.insert({word: 'be'})
-
         map_reduce.collection = 'foo'
+
+        map_reduce.insert_into_collection({word: 'to'})
+        map_reduce.insert_into_collection({word: 'be'})
+        map_reduce.insert_into_collection({word: 'or'})
+        map_reduce.insert_into_collection({word: 'not'})
+        map_reduce.insert_into_collection({word: 'to'})
+        map_reduce.insert_into_collection({word: 'be'})
+
         map_reduce.map = <<-EOS
           function () {
             emit(this.word, 1);

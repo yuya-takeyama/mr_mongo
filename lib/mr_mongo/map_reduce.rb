@@ -34,6 +34,10 @@ module MrMongo
       exec_with_options(options)
     end
 
+    def insert_into_collection(*args)
+      mongo_collection.send(:insert, *args)
+    end
+
     private
     def exec_with_options(options)
       mongo_collection.map_reduce(@map, @reduce, options)
