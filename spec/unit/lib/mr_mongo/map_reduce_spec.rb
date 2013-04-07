@@ -3,8 +3,6 @@ module MrMongo
     let(:context) { Context.new(db: testing_database) }
     let(:map_reduce) { MapReduce.new(context) }
 
-    after { drop_testing_database }
-
     describe '#to_options' do
       subject { map_reduce.to_options }
 
@@ -68,6 +66,8 @@ module MrMongo
           }
         EOS
       end
+
+      after { drop_testing_database }
 
       describe '#exec' do
         subject { map_reduce.exec.find.to_a }
