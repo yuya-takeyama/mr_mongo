@@ -3,8 +3,9 @@ module MrMongo
     attr_reader :map_reduce
 
     def initialize(context)
-      @context    = context
-      @map_reduce = MapReduce.new(context)
+      @context        = context
+      @map_reduce     = MapReduce.new(context)
+      @default_params = {}
     end
 
     def parse(&block)
@@ -19,10 +20,14 @@ module MrMongo
 
     def params
       if @context.params?
-        @context.params
+        @default_params.merge(@context.params)
       else
-        {}
+        @default_params
       end
+    end
+
+    def default_param(key, value)
+      @default_params[key] = value
     end
   end
 end

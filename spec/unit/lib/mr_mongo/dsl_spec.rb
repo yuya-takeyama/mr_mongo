@@ -28,14 +28,34 @@ module MrMongo
         context 'without default params' do
           it { should == {} }
         end
+
+        context 'with default params' do
+          before { dsl.default_param 'foo', 'bar' }
+
+          it { should eq({'foo' => 'bar'}) }
+        end
       end
 
       context 'when context has params' do
-        context 'without default params' do
-          let(:context) { Context.new(params: input_params) }
-          let(:input_params) { {"foo" => "bar"} }
+        let(:context) { Context.new(params: input_params) }
+        let(:input_params) { {'hoge' => 'fuga'} }
 
+        context 'without default params' do
           it { should == input_params }
+        end
+
+        context 'with default params' do
+          context 'no override' do
+            before { dsl.default_param 'foo', 'bar' }
+
+            it { should eq({'foo' => 'bar', 'hoge' => 'fuga'}) }
+          end
+
+          context 'override' do
+            before { dsl.default_param 'hoge', 'piyo' }
+
+            it { should eq({'hoge' => 'fuga'}) }
+          end
         end
       end
     end
