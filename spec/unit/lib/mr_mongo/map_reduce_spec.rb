@@ -1,6 +1,6 @@
 module MrMongo
   describe MapReduce do
-    let(:context) { Context.new(db: testing_database) }
+    let(:context) { Context.new }
     let(:map_reduce) { MapReduce.new(context) }
 
     describe '#to_options' do
@@ -26,6 +26,8 @@ module MrMongo
     end
 
     describe 'MapReduce excution', mongo: true do
+      let(:context) { Context.new(db: testing_database) }
+
       let(:expected) do
         [
           {'_id' => 'be', 'value' => 2.0},
