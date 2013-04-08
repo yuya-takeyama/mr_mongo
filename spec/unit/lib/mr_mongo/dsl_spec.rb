@@ -20,5 +20,20 @@ module MrMongo
         it { should be_true }
       end
     end
+
+    describe '#params' do
+      subject { dsl.params }
+
+      context 'by default' do
+        it { should == {} }
+      end
+
+      context 'when context has params' do
+        let(:context) { Context.new(params: input_params) }
+        let(:input_params) { {"foo" => "bar"} }
+
+        it { should == input_params }
+      end
+    end
   end
 end
