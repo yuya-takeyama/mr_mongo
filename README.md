@@ -64,6 +64,37 @@ function (key, values) {
 }
 ```
 
+### Dynamic Parameters
+
+sub-commands `exec` and `exec_on_memory` accepts *Dynamic Parameters* by `--params` option.
+
+`--params` can be specified as JSON hash.
+
+```
+$ bundle exec mr_mongo exec some_map_reduce.rb --params '{"date":"2013-02-01"}'
+```
+
+In DSL, Dynamic Parameters can be get with `#params` method.
+
+```ruby
+set :collection, 'accesses'
+set :query, {date: params['date']} if params['date']
+
+__END__
+
+...
+```
+
+### Default Parameter
+
+Default Parameter can be set with `#default_param` method
+
+```ruby
+default_param 'date', '2013-02-01'
+
+# => params will be {"date" => "2013-02-01"} by default.
+```
+
 ## Contributing
 
 1. Fork it
