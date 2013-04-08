@@ -24,7 +24,7 @@ module MrMongo
     describe '#params' do
       subject { dsl.params }
 
-      context 'by default' do
+      context 'when context has no params' do
         it { should == {} }
       end
 
