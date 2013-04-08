@@ -25,14 +25,18 @@ module MrMongo
       subject { dsl.params }
 
       context 'when context has no params' do
-        it { should == {} }
+        context 'without default params' do
+          it { should == {} }
+        end
       end
 
       context 'when context has params' do
-        let(:context) { Context.new(params: input_params) }
-        let(:input_params) { {"foo" => "bar"} }
+        context 'without default params' do
+          let(:context) { Context.new(params: input_params) }
+          let(:input_params) { {"foo" => "bar"} }
 
-        it { should == input_params }
+          it { should == input_params }
+        end
       end
     end
   end
