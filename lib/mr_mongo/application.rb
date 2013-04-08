@@ -1,5 +1,6 @@
 require 'thor'
 require 'mongo'
+require 'multi_json'
 require 'pp'
 
 module MrMongo
@@ -8,6 +9,7 @@ module MrMongo
 
     desc 'exec', 'executes MapReduce'
     method_option :db, default: DEFAULT_URI
+    method_option :params
     def exec(*files)
       files.each do |file|
         puts "Executing #{file}..."
@@ -20,6 +22,7 @@ module MrMongo
 
     desc 'exec_on_memory', 'executes MapReduce on memory'
     method_option :db, default: DEFAULT_URI
+    method_option :params
     def exec_on_memory(*files)
       files.each do |file|
         puts "Executing #{file} on memory..."
@@ -36,7 +39,10 @@ module MrMongo
     end
 
     def context
-      Context.new(db: database)
+      context_params = {db: database}
+      context_params[:params] = ::MultiJson.load(options[:params]) if options[:params]
+
+      Context.new(context_params)
     end
 
     def database
