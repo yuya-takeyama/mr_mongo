@@ -16,6 +16,7 @@ module MrMongo
       options[:finalize] = @finalize if defined?(@finalize)
       options[:out]      = @out      if defined?(@out)
       options[:verbose]  = @verbose  if defined?(@verbose)
+      options[:scope]    = @scope    if defined?(@scope)
 
       options[:raw] = true if defined?(@out) and @out.is_a?(::Hash) and @out[:inline]
 

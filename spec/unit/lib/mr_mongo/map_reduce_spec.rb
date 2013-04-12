@@ -16,6 +16,14 @@ module MrMongo
         it { should eq({query: {foo: "bar"}, limit: 50, verbose: true}) }
       end
 
+      context 'scope is set' do
+        before do
+          map_reduce.scope = {'foo' => 'bar'}
+        end
+
+        it { should eq({scope: {'foo' => 'bar'}}) }
+      end
+
       context 'out is inline' do
         before do
           map_reduce.out = {inline: true}
