@@ -1,6 +1,11 @@
 ChangeLog of Mr. Mongo
 ======================
 
+0.1.1 released 2013-04-12
+-------------------------
+
+- [Fix] Add `scope` for `MrMongo::MapReduce#to_options`
+
 0.1.0 released 2013-04-08
 -------------------------
 
