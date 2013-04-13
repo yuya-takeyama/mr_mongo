@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'mr_mongo'
 
-mapreduce_dir = File.expand_path('../mapreduce', File.dirname(__FILE__))
+mapreduce_dir = File.expand_path('./mapreduce')
 if Dir.exist?(mapreduce_dir) and not $LOAD_PATH.include?(mapreduce_dir)
   $LOAD_PATH.unshift(mapreduce_dir)
 end
