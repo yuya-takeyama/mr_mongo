@@ -1,6 +1,11 @@
 ChangeLog of Mr. Mongo
 ======================
 
+0.1.3 released 2013-04-13
+-------------------------
+
+- [Fix] Move `$LOAD_PATH` to current directory, not gem directory
+
 0.1.2 released 2013-04-13
 -------------------------
 
