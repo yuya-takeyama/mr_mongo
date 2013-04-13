@@ -9,7 +9,7 @@ module MrMongo
     def load(file)
       dsl_script = ::File.read(file).sub!(/^__END__\n.*\Z/m, '')
 
-      map_reduce = load_from_string(dsl_script)
+      map_reduce = load_from_string(dsl_script, file)
 
       InlineTemplateLoader.load(file).each do |key, val|
         map_reduce.send("#{key}=".to_sym, val)
