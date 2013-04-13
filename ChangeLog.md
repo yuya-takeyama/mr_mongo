@@ -1,6 +1,12 @@
 ChangeLog of Mr. Mongo
 ======================
 
+0.1.2 released 2013-04-13
+-------------------------
+
+- [Add] Append `./mapreduce` directory into `$LOAD_PATH`
+- [Fix] Now __FILE__ in DSL is its file path
+
 0.1.1 released 2013-04-12
 -------------------------
 
